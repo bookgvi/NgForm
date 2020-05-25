@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { DateFormModule } from './Modules/dateForm.module';
+import { PhoneArrayFormModule } from './Modules/poneArrayForm.module';
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    DateFormModule
+    DateFormModule,
+    PhoneArrayFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

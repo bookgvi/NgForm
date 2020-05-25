@@ -1,0 +1,11 @@
+<br/>
+<div class="">
+  <button (click)="addField()">Add</button>
+</div>
+<form action="" [formGroup]="phoneModel">
+  <div formArrayName="phoneArray" class="">
+    <div *ngFor="let phone of phoneModel.get('phoneArray').controls; let index = index;" class="">
+      <input [formControlName]="index">
+    </div>
+  </div>
+</form>

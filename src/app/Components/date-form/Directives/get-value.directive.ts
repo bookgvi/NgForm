@@ -8,7 +8,7 @@ export class GetValueDirective {
   inputEl: string;
 
   ngOnChanges(change: { [prop: string]: SimpleChange }) {
-    console.log(change['inputEl']);
+    // console.log(change['inputEl']);
   }
 
   @Output('get-valueChange')
