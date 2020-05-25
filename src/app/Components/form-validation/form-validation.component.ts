@@ -29,6 +29,10 @@ export class FormValidationComponent implements OnInit {
   ngOnInit() {
   }
 
+  public hasErrors(checkField: string, validator: string, field: any): boolean {
+    return this.check[checkField] || !this.formModel.hasError(validator, field);
+  }
+
   public onSubmit(): void {
     const keys = Object.keys(this.check);
     keys.forEach(key => {

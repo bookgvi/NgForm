@@ -3,9 +3,15 @@
     <div class="form-control">
       <label for="login">Login: </label>
       <div class="form-control__input">
-        <input id="login" type="text" formControlName="login" (focus)="check['login'] = true">
+        <input
+          id="login"
+          type="text"
+          formControlName="login"
+          (focus)="check['login'] = true"
+          [class.has-error]="!hasErrors('login', 'required', 'login')"
+        >
         <div
-          [hidden]="check['login'] || !formModel.hasError('required','login')"
+          [hidden]="hasErrors('login', 'required', 'login')"
           class="error-validate"
         >
           This field is required.
@@ -15,9 +21,15 @@
     <div class="form-control">
       <label for="email">Email: </label>
       <div class="form-control__input">
-        <input id="email" type="email" formControlName="email" (focus)="check['email'] = true">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          (focus)="check['email'] = true"
+          [class.has-error]="!hasErrors('email', 'email', 'email')"
+        >
         <div
-          [hidden]="check['email'] || !formModel.hasError('email', 'email')"
+          [hidden]="hasErrors('email', 'email', 'email')"
           class="error-validate"
         >
           Enter valid email.
@@ -28,54 +40,63 @@
       <div class="form-control">
         <label for="password">Password: </label>
         <div class="form-control__input">
-          <input id="password" type="password" formControlName="password" (focus)="check['password'] = true">
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            (focus)="check['password'] = true"
+            [class.has-error]="
+            !hasErrors('password', 'required', ['passwordGroup', 'password']) ||
+            !hasErrors('password', 'minlength', ['passwordGroup', 'password']) ||
+            !hasErrors('password', 'equal', 'passwordGroup')"
+          >
           <div class="errors">
-          <span
-            [hidden]="
-            check['password'] ||
-            !formModel.hasError('required', ['passwordGroup', 'password'])"
-            class="error-validate"
-          >
-            This field is required.
-          </span>
-          <span
-            [hidden]="
-            check['password'] ||
-            !formModel.hasError('minlength', ['passwordGroup', 'password'])"
-            class="error-validate"
-          >
-             Min length 4.
-          </span>
-          <span
-            [hidden]="
-            check['password'] ||
-            !formModel.hasError('equal', 'passwordGroup')"
-            class="error-validate"
-          >
-              Password fields must be the same.
-          </span>
+            <span
+              [hidden]="hasErrors('password', 'required', ['passwordGroup', 'password'])"
+              class="error-validate"
+            >
+              This field is required.
+            </span>
+            <span
+              [hidden]="hasErrors('password', 'minlength', ['passwordGroup', 'password'])"
+              class="error-validate"
+            >
+               Min length 4.
+            </span>
+            <span
+              [hidden]="hasErrors('password', 'equal', 'passwordGroup')"
+              class="error-validate"
+            >
+                Password fields must be the same.
+            </span>
           </div>
         </div>
       </div>
       <div class="form-control">
         <label for="repassword">Re-enter password: </label>
         <div class="form-control__input">
-          <input id="repassword" type="password" formControlName="rePassword" (focus)="check['password'] = true">
+          <input
+            id="repassword"
+            type="password"
+            formControlName="rePassword"
+            (focus)="check['password'] = true"
+            [class.has-error]="
+              !hasErrors('password', 'required', ['passwordGroup', 'rePassword']) ||
+              !hasErrors('password', 'equal', 'passwordGroup')"
+          >
           <div class="errors">
-          <span
-            [hidden]="check['password'] ||
-            formModel.hasError('required', ['passwordGroup', 'repassword'])"
-            class="error-validate"
-          >
-            This field is required.
-          </span>
-          <span
-            [hidden]="check['password'] ||
-          !formModel.hasError('equal', 'passwordGroup')"
-            class="error-validate"
-          >
-             Password fields must be the same.
-          </span>
+            <span
+              [hidden]="hasErrors('password', 'required', ['passwordGroup', 'rePassword'])"
+              class="error-validate"
+            >
+              This field is required.
+            </span>
+            <span
+              [hidden]="hasErrors('password', 'equal', 'passwordGroup')"
+              class="error-validate"
+            >
+               Password fields must be the same.
+            </span>
           </div>
         </div>
       </div>

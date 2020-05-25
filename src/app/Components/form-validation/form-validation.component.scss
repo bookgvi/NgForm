@@ -4,28 +4,41 @@ form {
 }
 .form {
   width: 450px;
-}
-.form-control {
-  height: 45px;
-  display: flex;
-  justify-content: space-between;
-  margin-right: 4px;
-  & label {
-    margin-top: 4px;
-  }
-  & .form-control__input {
-    width: 300px;
-    text-align: right;
-    & input {
+
+  & .form-control {
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      margin-top: 4px;
+    }
+
+    .form-control__input {
+      max-width: 300px;
+      min-width: 0;
       width: 100%;
+      text-align: right;
+
+      input {
+        box-sizing: border-box;
+        padding-left: 5px;
+        width: 100%;
+        min-width: 0;
+
+        &.has-error {
+          border: 2px solid #fc4b4b;
+        }
+      }
+
+      & .error-validate {
+        margin-top: 3px;
+        color: #fc4b4b;
+        font-size: 12px;
+      }
     }
   }
-}
-.error-validate {
-  margin-top: 2px;
-  color: #fc4b4b;
-  font-size: 12px;
-}
-button {
-  width: 100%;
+  button {
+    width: 100%;
+  }
 }
