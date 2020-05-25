@@ -1,11 +1,11 @@
 <div class="">
   <form [formGroup]="formModel" action="">
     <div formGroupName="formGroupName" class="">
-      <label for="from">
-        Date From: <input id=from name="from" type="text" formControlName="from">
+      <label for="fromInput">
+        Date From: <input id="fromInput" name="fromInput" type="text" [(get-value)]="fromInput" formControlName="from">
       </label>
       <label for="to">
-        Date To: <input id=to name="from" type="text" formControlName="to">
+        Date To: <input id=to name="toInput" type="text" [(get-value)]="toInput" formControlName="to">
       </label>
     </div>
   </form>
