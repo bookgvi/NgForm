@@ -1,8 +1,31 @@
+form {
+  display: flex;
+  justify-content: center;
+}
+.form {
+  width: 450px;
+}
 .form-control {
   height: 45px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 4px;
+  & label {
+    margin-top: 4px;
+  }
+  & .form-control__input {
+    width: 300px;
+    text-align: right;
+    & input {
+      width: 100%;
+    }
+  }
 }
 .error-validate {
   margin-top: 2px;
   color: #fc4b4b;
   font-size: 12px;
+}
+button {
+  width: 100%;
 }

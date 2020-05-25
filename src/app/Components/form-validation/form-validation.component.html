@@ -1,31 +1,35 @@
 <form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
-  <div class="form-control">
-    <label>
-      Login: <input type="text" formControlName="login" (focus)="check['login'] = true">
-      <div
-        [hidden]="check['login'] || !formModel.hasError('required','login')"
-        class="error-validate"
-      >
-        This field is required
-      </div>
-    </label>
-  </div>
-  <div class="form-control">
-    <label>
-      Email: <input type="email" formControlName="email" (focus)="check['email'] = true">
-      <div
-        [hidden]="check['email'] || !formModel.hasError('email', 'email')"
-        class="error-validate"
-      >
-        Enter valid email
-      </div>
-    </label>
-  </div>
-  <div formGroupName="passwordGroup" class="">
+  <div class="form">
     <div class="form-control">
-      <label>
-        Password: <input type="password" formControlName="password" (focus)="check['password'] = true">
-        <div class="errors">
+      <label for="login">Login: </label>
+      <div class="form-control__input">
+        <input id="login" type="text" formControlName="login" (focus)="check['login'] = true">
+        <div
+          [hidden]="check['login'] || !formModel.hasError('required','login')"
+          class="error-validate"
+        >
+          This field is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="email">Email: </label>
+      <div class="form-control__input">
+        <input id="email" type="email" formControlName="email" (focus)="check['email'] = true">
+        <div
+          [hidden]="check['email'] || !formModel.hasError('email', 'email')"
+          class="error-validate"
+        >
+          Enter valid email.
+        </div>
+      </div>
+    </div>
+    <div formGroupName="passwordGroup" class="">
+      <div class="form-control">
+        <label for="password">Password: </label>
+        <div class="form-control__input">
+          <input id="password" type="password" formControlName="password" (focus)="check['password'] = true">
+          <div class="errors">
           <span
             [hidden]="
             check['password'] ||
@@ -34,29 +38,30 @@
           >
             This field is required.
           </span>
-            <span
-              [hidden]="
-              check['password'] ||
-              !formModel.hasError('minlength', ['passwordGroup', 'password'])"
-              class="error-validate"
-            >
+          <span
+            [hidden]="
+            check['password'] ||
+            !formModel.hasError('minlength', ['passwordGroup', 'password'])"
+            class="error-validate"
+          >
              Min length 4.
           </span>
-            <span
-              [hidden]="
-              check['password'] ||
-              !formModel.hasError('equal', 'passwordGroup')"
-              class="error-validate"
-            >
+          <span
+            [hidden]="
+            check['password'] ||
+            !formModel.hasError('equal', 'passwordGroup')"
+            class="error-validate"
+          >
               Password fields must be the same.
           </span>
+          </div>
         </div>
-      </label>
-    </div>
-    <div class="form-control">
-      <label>
-        Re-enter password: <input type="password" formControlName="rePassword" (focus)="check['password'] = true">
-        <div class="errors">
+      </div>
+      <div class="form-control">
+        <label for="repassword">Re-enter password: </label>
+        <div class="form-control__input">
+          <input id="repassword" type="password" formControlName="rePassword" (focus)="check['password'] = true">
+          <div class="errors">
           <span
             [hidden]="check['password'] ||
             formModel.hasError('required', ['passwordGroup', 'repassword'])"
@@ -66,14 +71,15 @@
           </span>
           <span
             [hidden]="check['password'] ||
-            !formModel.hasError('equal', 'passwordGroup')"
+          !formModel.hasError('equal', 'passwordGroup')"
             class="error-validate"
           >
              Password fields must be the same.
           </span>
+          </div>
         </div>
-      </label>
+      </div>
     </div>
+    <button type="submit">Login</button>
   </div>
-  <button type="submit">Login</button>
 </form>
